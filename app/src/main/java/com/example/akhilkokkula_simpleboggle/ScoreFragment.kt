@@ -34,7 +34,11 @@ class ScoreFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "That's incorrect $score", Toast.LENGTH_LONG).show()
         }
-        totalScore += score
+        if (totalScore + score < 0) {
+            totalScore = 0
+        } else {
+            totalScore += score
+        }
         val totalScoreStr = totalScore.toString()
         binding.scoreDisplay.text = "Score: $totalScoreStr"
     }
